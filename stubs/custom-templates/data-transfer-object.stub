@@ -11,6 +11,7 @@ class $CLASS$ {
         public readonly string $foo
     )
     {
+        return $this;
     }
 
 }

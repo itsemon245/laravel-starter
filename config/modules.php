@@ -32,6 +32,9 @@ return [
             'routes/web' => 'Routes/web.php',
             'routes/api' => 'Routes/api.php',
             'views/index' => 'Resources/views/index.blade.php',
+            'views/show' => 'Resources/views/show.blade.php',
+            'views/create' => 'Resources/views/create.blade.php',
+            'views/edit' => 'Resources/views/edit.blade.php',
             'views/master' => 'Resources/views/layouts/master.blade.php',
             'scaffold/config' => 'Config/config.php',
             'composer' => 'composer.json',
@@ -46,6 +49,9 @@ return [
             'vite' => ['LOWER_NAME'],
             'json' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE', 'PROVIDER_NAMESPACE'],
             'views/index' => ['LOWER_NAME'],
+            'views/create' => ['LOWER_NAME'],
+            'views/edit' => ['LOWER_NAME'],
+            'views/show' => ['LOWER_NAME'],
             'views/master' => ['LOWER_NAME', 'STUDLY_NAME'],
             'scaffold/config' => ['STUDLY_NAME'],
             'composer' => [
@@ -192,8 +198,9 @@ return [
         Commands\TestMakeCommand::class,
         Commands\UnUseCommand::class,
         Commands\UpdateCommand::class,
-        Commands\MakeModuleDtoCommand::class,
         Commands\UseCommand::class,
+        // Custom Commands
+        App\Modules\Commands\DtoMakeCommand::class,
     ],
 
     /*

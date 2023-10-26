@@ -1,15 +1,16 @@
 <?php
 
-namespace Nwidart\Modules\Commands;
+namespace App\Modules\Commands;
 
 use Illuminate\Support\Str;
-use Nwidart\Modules\Support\Config\GenerateConfigReader;
 use Nwidart\Modules\Support\Stub;
+use Nwidart\Modules\Commands\GeneratorCommand;
 use Nwidart\Modules\Traits\ModuleCommandTrait;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
+use Nwidart\Modules\Support\Config\GenerateConfigReader;
 
-class MakeModuleDtoCommand extends GeneratorCommand
+class DtoMakeCommand extends GeneratorCommand
 {
     use ModuleCommandTrait;
 
@@ -92,7 +93,7 @@ class MakeModuleDtoCommand extends GeneratorCommand
      */
     private function getDtoName()
     {
-        return Str::studly($this->argument('dto'));
+        return Str::studly($this->argument('dto') ?? $this->getModuleName()."Dto");
     }
     /**
      * Get default namespace.
