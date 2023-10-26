@@ -137,8 +137,10 @@ return [
             'component-class' => ['path' => 'View/Components', 'generate' => false],
             // Custom paths
             'service' => ['path' => 'Services', 'generate' => true],
-            'data-transfer-object' => ['path' => 'DataTransferObjects', 'generate' => true],
-            'spatie-data' => ['path' => 'Data', 'generate' => false],
+            'enum' => ['path' => 'Enums', 'generate' => true],
+            'exception' => ['path' => 'Exceptions', 'generate' => true],
+            'data' => ['path' => 'Data', 'generate' => true],
+            'data-transfer-object' => ['path' => 'DataTransferObjects', 'generate' => false],
         ],
     ],
 
@@ -201,6 +203,7 @@ return [
         Commands\UseCommand::class,
         // Custom Commands
         App\Modules\Commands\DtoMakeCommand::class,
+        App\Modules\Commands\DataMakeCommand::class,
     ],
 
     /*

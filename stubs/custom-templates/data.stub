@@ -1,0 +1,13 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Spatie\LaravelData\Data;
+
+class $CLASS$ extends Data
+{
+    public function __construct(
+        public string $var,
+    ) {
+    }
+}
