@@ -1,0 +1,23 @@
+{
+    "name": "nwidart/blog",
+    "description": "",
+    "authors": [
+        {
+            "name": "Mojahidul Islam Emon",
+            "email": "itsemon245@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Blog\\": ""
+        }
+    }
+}

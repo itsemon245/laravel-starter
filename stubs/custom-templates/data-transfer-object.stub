@@ -1,0 +1,16 @@
+<?php
+
+namespace $NAMESPACE$;
+
+class $CLASS$ {
+
+   /**
+     * Create a new $CLASS$ instance.
+     */
+    public function __construct(
+        public readonly string $foo
+    )
+    {
+    }
+
+}
