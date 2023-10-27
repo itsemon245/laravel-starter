@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form hx-post="{{ route('login') }}" hx-target="body">
         @csrf
 
         <!-- Email Address -->
@@ -39,7 +39,7 @@
                 </a>
             @endif
 
-            <x-primary-button class="ml-3">
+            <x-primary-button class="ml-3" type='submit'>
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
