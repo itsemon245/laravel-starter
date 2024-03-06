@@ -1,6 +1,5 @@
-@extends('layouts.app', ['title' => 'Dashboard'])
+@extends('layouts.admin.app')
 
 @section('content')
-    <!-- New Table -->
    
 @endsection

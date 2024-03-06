@@ -1,16 +1,7 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\ClientController;
 
-
-Route::prefix( 'dashboard' )
-    ->middleware( [ 'auth', 'verified' ] )
-    ->group( function () {
-
-        Route::get( '/', function () {
-            return view( 'dashboard.index' );
-        } )->name( 'dashboard' );
-
-        Route::resource( 'client', ClientController::class);
-    } );
+// Prefix dashboard is added in Route service provider
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

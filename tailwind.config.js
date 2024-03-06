@@ -11,11 +11,20 @@ export default {
     ],
 
     theme: {
+        colors: {
+            transparent: 'transparent',
+            current: 'currentColor',
+            primary: {
+                DEFAULT: '#0ea5e9',
+                soft: '#7dd3fc'
+            }
+          },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
+        
     },
 
     plugins: [
