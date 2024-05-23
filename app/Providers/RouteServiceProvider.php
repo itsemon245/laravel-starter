@@ -8,37 +8,76 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
-class RouteServiceProvider extends ServiceProvider
-{
+class RouteServiceProvider extends ServiceProvider {
     /**
-     * The path to your application's "home" route.
-     *
-     * Typically, users are redirected here after authentication.
+     * The path to the "home" route for your application.
+     * This is used by Laravel authentication to redirect users after login.
      *
      * @var string
      */
-    public const HOME = '/';
+    public const HOME = '/dashboard';
 
     /**
-     * Define your route model bindings, pattern filters, and other route configuration.
+     * If specified, this namespace is automatically applied to your controller routes.
+     *
+     * In addition, it is set as the URL generator's root namespace.
+     *
+     * @var string
      */
-    public function boot(): void
-    {
-        RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
-        });
+    protected $namespace = null;
+
+    /**
+     * Define your route model bindings, pattern filters, etc.
+     *
+     * @return void
+     */
+    public function boot() {
+        $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::middleware('api')
-                ->prefix('api')
-                ->group(base_path('routes/api.php'));
-
+            /**
+             * Load Web Routes
+             */
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
 
-            Route::middleware('web', 'auth', 'verified')
+            /**
+             * Load System Routes
+             */
+            Route::middleware('web')
+                ->group(base_path('routes/system/index.php'));
+
+            /**
+             * Load Frontend Routes
+             */
+            Route::middleware('web')
+                ->group(base_path('routes/frontend/index.php'));
+
+            /**
+             * Load Dashboard Routes
+             */
+            Route::middleware(['web', 'auth', 'verified'])
                 ->prefix('dashboard')
-                ->group(base_path('routes/dashboard.php'));
+                ->group(base_path('routes/dashboard/index.php'));
+
+            /**
+             * Load Api Routes
+             */
+            Route::prefix('api')
+                ->middleware('api')
+                ->group(base_path('routes/api/index.php'));
+
+        });
+    }
+
+    /**
+     * Configure the rate limiters for the application.
+     *
+     * @return void
+     */
+    protected function configureRateLimiting() {
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60);
         });
     }
 }

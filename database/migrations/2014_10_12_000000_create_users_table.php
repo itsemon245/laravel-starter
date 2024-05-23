@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->boolean('is_admin')->default(false);
             $table->longText('avatar')->nullable();
-            $table->text('police_station')->nullable();
             $table->timestamp('email_verified_at')->default(now());
             $table->string('password');
             $table->rememberToken();
