@@ -1,5 +1,8 @@
 import './bootstrap';
-import Alpine from 'alpinejs'
+import Alpine from 'alpinejs';
+import './utils/lodash';
+import './vue/index';
+
 
 Alpine.start()
  
