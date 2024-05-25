@@ -9,5 +9,7 @@
         });
     }
 </script>
+@livewireScriptConfig
+<wireui:scripts />
 <script src="{{ asset('assets/js/htmx.min.js') }}"></script>
 @stack('scripts')

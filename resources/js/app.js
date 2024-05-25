@@ -1,10 +1,9 @@
 import './bootstrap';
-import Alpine from 'alpinejs';
 import './utils/lodash';
 import './vue/index';
-
-
-Alpine.start()
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+// import Clipboard from '@ryangjchandler/alpine-clipboard'
  
-// If you want Alpine's instance to be available everywhere.
-window.Alpine = Alpine
+// Alpine.plugin(Clipboard)
+ 
+Livewire.start()

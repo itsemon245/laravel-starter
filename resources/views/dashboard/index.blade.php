@@ -1,5 +1,6 @@
 @extends('layouts.admin.app')
 
 @section('content')
-    <test></test>
+<x-input wire:model="firstName" label="Name" placeholder="User's first name" />
+<livewire:counter />
 @endsection
