@@ -9,6 +9,6 @@
         });
     }
 </script>
-@livewireScriptConfig
+@livewireScripts
 <script src="{{ asset('assets/js/htmx.min.js') }}"></script>
 @stack('scripts')

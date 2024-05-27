@@ -14,13 +14,12 @@
 
 <body class="flex h-screen bg-gray-50 dark:bg-gray-900">
 
-    <div id="vue-root">
         @yield('header')
         @yield('aside')
         @yield('main')
 
         @yield('footer')
-    </div>
+        <x-mary-toast />
     @include('layouts.scripts')
 </body>
 
