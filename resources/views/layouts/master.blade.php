@@ -8,17 +8,19 @@
 
     <title>{{ config('app.name') }}</title>
     @include('layouts.styles')
-    
-    
+
+
 </head>
 
 <body class="flex h-screen bg-gray-50 dark:bg-gray-900">
-    
-    @yield('header')
-    @yield('aside')
-    @yield('main')
-    
-    @yield('footer')
+
+    <div id="vue-root">
+        @yield('header')
+        @yield('aside')
+        @yield('main')
+
+        @yield('footer')
+    </div>
     @include('layouts.scripts')
 </body>
 
