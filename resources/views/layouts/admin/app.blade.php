@@ -6,7 +6,7 @@
         {{-- NAVBAR mobile only --}}
         <x-mary-nav sticky class="lg:hidden">
             <x-slot:brand>
-                <div class="ml-5 pt-5">App</div>
+                <div class="ml-5 pt-5">{{ config('app.name') }}</div>
             </x-slot:brand>
             <x-slot:actions>
                 <label for="main-drawer" class="lg:hidden mr-3">
@@ -21,7 +21,7 @@
         <x-slot:sidebar drawer="main-drawer" collapsible class="bg-base-100 lg:bg-inherit">
 
             {{-- BRAND --}}
-            <div class="ml-5 pt-5">App</div>
+            <div class="ml-5 pt-5">{{ config('app.name') }}</div>
 
             {{-- MENU --}}
             <x-mary-menu activate-by-route>
@@ -41,11 +41,19 @@
                     <x-mary-menu-separator />
                 @endif
 
-                <x-mary-menu-item title="Hello" icon="o-sparkles" link="/" />
-                <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth">
-                    <x-mary-menu-item title="Wifi" icon="o-wifi" link="####" />
-                    <x-mary-menu-item title="Archives" icon="o-archive-box" link="####" />
-                </x-mary-menu-sub>
+                @foreach (sidebar() as $title => $menu)
+                    @if ($menu['submenu'])
+                        <x-mary-menu-sub title="{{ $title }}" icon="{{ $menu['icon'] }}">
+                            @foreach ($menu['submenu'] as $subTitle => $sub)
+                                <x-mary-menu-item title="{{ $subTitle }}" icon="{{ $sub['icon'] }}"
+                                    link="{{ $sub['route'] }}" />
+                            @endforeach
+                        </x-mary-menu-sub>
+                    @else
+                        <x-mary-menu-item title="{{ $title }}" icon="{{ $menu['icon'] }}"
+                            link="{{ $menu['route'] }}" />
+                    @endif
+                @endforeach
             </x-mary-menu>
         </x-slot:sidebar>
 
